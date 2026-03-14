@@ -94,6 +94,11 @@ jobs:
           } else {
             & $ilasm ${{ github.workspace }}\dump_mod.IL /DLL /OUTPUT=${{ github.workspace }}\output\Assembly-CSharp.dll
           }
+          mkdir ${{ github.workspace }}\output\tools
+          Copy-Item "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe" ${{ github.workspace }}\output\tools\
+          Copy-Item "C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe.config" ${{ github.workspace }}\output\tools\
+          Copy-Item "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ilasm.exe" ${{ github.workspace }}\output\tools\
+          Copy-Item "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\fusion.dll" ${{ github.workspace }}\output\tools\
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -102,8 +107,4 @@ jobs:
           path: |
             dump.IL
             dump_mod.IL
-            output\Assembly-CSharp.dll
-            C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe
-            C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ildasm.exe.config
-            C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ilasm.exe
-            C:\Windows\Microsoft.NET\Framework64\v4.0.30319\fusion.dll
+            output
