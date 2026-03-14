@@ -98,6 +98,9 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Mosaic Patched DLL
-          path: output\Assembly-CSharp.dll
+          name: Mosaic Patch Result
+          path: |
+            dump.IL
+            dump_mod.IL
+            output\Assembly-CSharp.dll
           
